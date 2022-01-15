@@ -107,6 +107,7 @@ def MultiXwalk2Classification_Exhaustive(df,classlist,noisily=True):
     Classification,xwalks = {},{}
     for i in range(Nclasses):
         Classification[i] = {}
+    
     # Step 1: Construct NodeLists
     if noisily==True:
         print('constructing node lists')
@@ -115,12 +116,14 @@ def MultiXwalk2Classification_Exhaustive(df,classlist,noisily=True):
         class_i = classlist[i]
         nodelist[i] = df.loc[pd.notna(df[class_i]),class_i].unique()
         nodelistG[i] = ['g'+str(i)+':'+x for x in nodelist[i]]
+    
     # Step 2: Define Graph
     if noisily==True:
         print('constructing graph and adding edges')
     G = nx.Graph()
     for i in range(Nclasses):
         G.add_nodes_from(nodelistG[i])
+    
     # Step 3: Exhaustive Links
     for i_start in range(Nclasses):
         if noisily==True:
@@ -132,6 +135,7 @@ def MultiXwalk2Classification_Exhaustive(df,classlist,noisily=True):
                 for x in nodelist[i_start]:
                     y = df.loc[ (df[c0]==x) & (pd.notna(df[c1])),c1 ].unique()
                     G.add_edges_from([('g'+str(i_start)+':'+x,'g'+str(i_end)+':'+iy) for iy in y])
+    
     # Step 4: Construct Connected Components and Loop
     if noisily==True:
         print('constructing connected components')
@@ -141,6 +145,7 @@ def MultiXwalk2Classification_Exhaustive(df,classlist,noisily=True):
         NODES = ConnectedComponents[ic].nodes()
         for i in range(Nclasses):
             Classification[i][ic] = fnmatch.filter(NODES,'g'+str(i)+':*')
+    
     # Step 5: Convert Classification into "Consistent" Crosswalks
     for i in range(Nclasses):
         dftemp = df[[classlist[i]]].drop_duplicates()
@@ -150,4 +155,5 @@ def MultiXwalk2Classification_Exhaustive(df,classlist,noisily=True):
             values = [x.replace('g'+str(i)+':','') for x in Classification[i][ic]]
             dftemp.loc[dftemp[classlist[i]].isin(values),'classification'] = ic
         xwalks[i] = dftemp
+    
     return Classification,xwalks

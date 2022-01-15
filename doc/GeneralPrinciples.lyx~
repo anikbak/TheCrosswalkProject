@@ -1,0 +1,697 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{titling,mathpazo}
+\setlength\droptitle{-1in}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+General Principles for Crosswalk Design
+\end_layout
+
+\begin_layout Author
+Aniket Baksy
+\end_layout
+
+\begin_layout Date
+1/12/2022
+\end_layout
+
+\begin_layout Section
+Definitions
+\end_layout
+
+\begin_layout Subsection
+Preliminaries
+\end_layout
+
+\begin_layout Standard
+A 
+\series bold
+population 
+\series default
+is a set of agents 
+\begin_inset Formula $P$
+\end_inset
+
+ which have a set of properties 
+\begin_inset Formula $\left\{ \boldsymbol{a}_{i}\vert i\in P,\boldsymbol{a}_{i}\in\mathbb{N}^{M}\right\} $
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N$
+\end_inset
+
+ denote the number of agents in the population.
+ 
+\end_layout
+
+\begin_layout Standard
+A 
+\series bold
+weighted population
+\series default
+ is a set of agents 
+\begin_inset Formula $P$
+\end_inset
+
+ which have a set of properties 
+\begin_inset Formula $\left\{ \boldsymbol{a}_{i}\vert i\in P,\boldsymbol{a}_{i}\in\mathbb{N}^{M}\right\} $
+\end_inset
+
+ and a set of weights 
+\begin_inset Formula $W=\left\{ w_{i}\vert i\in P\right\} $
+\end_inset
+
+ which (wlog) sum to 1.
+ 
+\end_layout
+
+\begin_layout Standard
+A 
+\series bold
+classification system 
+\series default
+for property 
+\begin_inset Formula $m$
+\end_inset
+
+ is a discrete set of values for 
+\begin_inset Formula $a_{m}$
+\end_inset
+
+ which summarizes all information about property 
+\begin_inset Formula $m$
+\end_inset
+
+ that is available to a researcher in a dataset and mapping between this
+ set and the agents in the population.
+ A classification system consists of two objects 
+\begin_inset Formula $A_{m},C_{m}$
+\end_inset
+
+, where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A_{m}=\left\{ \phi,a_{1},a_{2},\dots,a_{N_{m}}\right\} $
+\end_inset
+
+ is a set of possible values, and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ denotes the 
+\begin_inset Quotes eld
+\end_inset
+
+unclassified
+\begin_inset Quotes erd
+\end_inset
+
+ state.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{m}:P\to A_{m}$
+\end_inset
+
+ is a mapping between the set of agents and the set of possible values for
+ the property.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+dataset representation
+\series default
+ of a classification system is a 
+\begin_inset Formula $\tilde{N}\times2$
+\end_inset
+
+ matrix, which I will denote by 
+\begin_inset Formula $C_{m}$
+\end_inset
+
+ as well (abusing notation), in which the first column contains the identity
+ of an agent 
+\begin_inset Formula $i$
+\end_inset
+
+ and the second column contains the classification assigned.
+ Note that 
+\begin_inset Formula $\tilde{N}\geq N$
+\end_inset
+
+ since an agent could be assigned to multiple values in 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+A classification system is said to be 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+complete
+\series default
+ if all agents in 
+\begin_inset Formula $P$
+\end_inset
+
+ are matched to at least one element of 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+, i.e.
+ the pre-image of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ under 
+\begin_inset Formula $C_{m}$
+\end_inset
+
+ is empty.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+one-to-one
+\series default
+ if the mapping 
+\begin_inset Formula $C_{m}$
+\end_inset
+
+ is one-to-one, i.e.
+ each agent in 
+\begin_inset Formula $P$
+\end_inset
+
+ is assigned to at most one element in 
+\begin_inset Formula $A_{m}$
+\end_inset
+
+.
+ In this case, note that 
+\begin_inset Formula $\tilde{N}=N$
+\end_inset
+
+ and the first column of the dataset representation of the classification
+ system is just the set of elements in 
+\begin_inset Formula $P$
+\end_inset
+
+ with no repetition.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+well-defined 
+\series default
+if the mapping 
+\begin_inset Formula $C_{m}$
+\end_inset
+
+ is one-to-one and complete.
+ 
+\end_layout
+
+\begin_layout Standard
+For any one-to-one classification system, define the 
+\series bold
+assignment generated by a classification system 
+\series default
+as the partition 
+\begin_inset Formula $\alpha\subseteq2^{P}$
+\end_inset
+
+ of 
+\begin_inset Formula $P$
+\end_inset
+
+ such that 
+\begin_inset Formula $\alpha_{j}=\left\{ i\in P:C_{m}(i)=a_{j}\right\} $
+\end_inset
+
+.
+ Note that this is indeed a partition of 
+\begin_inset Formula $P$
+\end_inset
+
+ since each element of 
+\begin_inset Formula $P$
+\end_inset
+
+ can be assigned to at most one of the 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+'s.
+ 
+\end_layout
+
+\begin_layout Subsection
+The Ideal Crosswalk
+\end_layout
+
+\begin_layout Standard
+Consider a population 
+\begin_inset Formula $P$
+\end_inset
+
+ and two classification systems 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right),\left(A_{m2},C_{m2}\right)$
+\end_inset
+
+ for a property 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ An 
+\series bold
+ideal crosswalk
+\series default
+ for property 
+\begin_inset Formula $m$
+\end_inset
+
+ from classification system 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(A_{m2},C_{m2}\right)$
+\end_inset
+
+ is a mapping 
+\begin_inset Formula $X_{m12}:A_{1}\to A_{2}$
+\end_inset
+
+ satisfying the following properties:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X_{m12}\left(a_{1}\right)$
+\end_inset
+
+ is unique for every 
+\begin_inset Formula $a_{1}\in A_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+For every agent 
+\begin_inset Formula $i\in P$
+\end_inset
+
+, 
+\begin_inset Formula $C_{m1}(i)=a_{1i}\implies C_{m2}(i)=X_{m12}(a_{1})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that an ideal crosswalk may only exist if the classification systems
+ 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right),\left(A_{m2},C_{m2}\right)$
+\end_inset
+
+ are both one-to-one and 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ is a 
+\series bold
+refinement
+\series default
+ of 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ (that is, for any set 
+\begin_inset Formula $\alpha_{1j}\in\alpha_{j}$
+\end_inset
+
+, there is a set 
+\begin_inset Formula $\alpha_{2k}\in\alpha_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\alpha_{1m}\subseteq\alpha_{2k}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Real World Crosswalks
+\end_layout
+
+\begin_layout Standard
+Consider a population 
+\begin_inset Formula $P$
+\end_inset
+
+ and two complete classification systems 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right),\left(A_{m2},C_{m2}\right)$
+\end_inset
+
+ for a property 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ A 
+\series bold
+multi-crosswalk 
+\series default
+for property 
+\begin_inset Formula $m$
+\end_inset
+
+ from classification system 
+\begin_inset Formula $(A_{m1},C_{m1})$
+\end_inset
+
+ to 
+\begin_inset Formula $(A_{m2},C_{m2})$
+\end_inset
+
+ is a correspondence 
+\begin_inset Formula $X_{m12}\subseteq A_{1}\times A_{2}$
+\end_inset
+
+, such that for every agent 
+\begin_inset Formula $i\in P$
+\end_inset
+
+ and every 
+\begin_inset Formula $a_{1}\in A_{1}$
+\end_inset
+
+, if 
+\begin_inset Formula $a_{1}\in C_{m1}(i)$
+\end_inset
+
+ then there is at least one 
+\begin_inset Formula $a_{2}\in C_{m2}(i)$
+\end_inset
+
+ such that 
+\begin_inset Formula $(a_{1},a_{2})\in X_{m12}$
+\end_inset
+
+.
+ Note that a multi-crosswalk always exists between any two complete classificati
+on systems.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+dataset representation
+\series default
+ of a multi-crosswalk between classification systems 1 and 2 is a 
+\begin_inset Formula $\tilde{M}\times2$
+\end_inset
+
+ matrix denoted 
+\begin_inset Formula $X_{12}$
+\end_inset
+
+ in which the first column contains values of 
+\begin_inset Formula $a_{1}\in A_{1}$
+\end_inset
+
+ and the second column contains values of 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula $(a_{1},a_{2})\in X_{m12}$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\tilde{M}\leq N_{m1}\times N_{m2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If both classification systems are one-to-one, then the attributes 
+\begin_inset Formula $a_{2i}$
+\end_inset
+
+ for each agent 
+\begin_inset Formula $i$
+\end_inset
+
+ can be constructed using a one-to-many merge between the dataset representation
+ of the first classification system 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right)$
+\end_inset
+
+ and the multi-crosswalk 
+\begin_inset Formula $X_{m12}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Consider a weighted population 
+\begin_inset Formula $(P,W)$
+\end_inset
+
+ and two complete classification systems 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right),\left(A_{m2},C_{m2}\right)$
+\end_inset
+
+ for a property 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $X_{m12}$
+\end_inset
+
+ be the multi-crosswalk between these systems.
+ Consider the matrix 
+\begin_inset Formula $Z_{m12}$
+\end_inset
+
+ containing the dataset representation of 
+\begin_inset Formula $X_{m12}$
+\end_inset
+
+ and a column containing the weighted total number of agents associated
+ with each row 
+\begin_inset Formula $(a_{m1},a_{m2})$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+N\left(a_{m1},a_{m2}\right)=\sum_{\left\{ i:C_{m1}(i)=a_{m1},C_{m2}(i)=a_{m2}\right\} }w_{i}
+\]
+
+\end_inset
+
+This matrix is always defined.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+statistical approximating ideal crosswalk with random tie breaks 
+\series default
+between 
+\begin_inset Formula $\left(A_{m1},C_{m1}\right),\left(A_{m2},C_{m2}\right)$
+\end_inset
+
+ is the ideal crosswalk represented by 
+\begin_inset Formula $\tilde{Z}_{m12}$
+\end_inset
+
+ resulting from the following algorithm.
+ 
+\end_layout
+
+\begin_layout Itemize
+For each level 
+\begin_inset Formula $a_{m1j}\in A_{1}$
+\end_inset
+
+, compute 
+\begin_inset Formula $\widehat{N}\left(a_{m1j}\right)=\max_{a_{m2}\in A_{2}:\left(a_{m1j},a_{m2}\right)\in X_{m12}}N\left(a_{m1j},a_{m2}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Drop all rows in 
+\begin_inset Formula $Z_{m12}$
+\end_inset
+
+ in which 
+\begin_inset Formula $N\left(a_{m1j},a_{m2}\right)<\widehat{N}\left(a_{m1j}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If there are 
+\begin_inset Formula $D_{j}$
+\end_inset
+
+ duplicates still remaining, retain any one of the 
+\begin_inset Formula $a_{m2}$
+\end_inset
+
+ values associated with 
+\begin_inset Formula $a_{m1j}$
+\end_inset
+
+ with equal probability 
+\begin_inset Formula $1/D_{j}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Hierarchial Crosswalks
+\end_layout
+
+\begin_layout Standard
+For most classification systems, there is a well-defined hierarchy of classifica
+tion systems.
+ A hierarchial classification system 
+\end_layout
+
+\begin_layout Section
+Algorithms
+\end_layout
+
+\end_body
+\end_document

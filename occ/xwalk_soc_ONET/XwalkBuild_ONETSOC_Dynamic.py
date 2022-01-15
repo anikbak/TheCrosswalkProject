@@ -70,14 +70,14 @@ for iy in range(5):
     y = years[iy]
     
     # Load classification values for each year
-    dfs[y] = pd.read_csv("occ/xwalk_soc_ONET/"+str(y)+"_Occupations.csv")
+    dfs[y] = pd.read_csv("occ/raw/onetsoc dynamic/"+str(y)+"_Occupations.csv")
     
     if iy < 4:
         
         # Load 8-digit crosswalks
         # -----------------------
         yp = years[iy+1]
-        df8 = pd.read_csv("occ/xwalk_soc_ONET/"+str(y)+"_to_"+str(yp)+"_Crosswalk.csv")
+        df8 = pd.read_csv("occ/raw/onetsoc dynamic/"+str(y)+"_to_"+str(yp)+"_Crosswalk.csv")
         xwalks8[str(y)+'_'+str(yp)] = df8 
         
         # Construct 6-digit crosswalks
@@ -155,7 +155,7 @@ for iy in range(1,4):
 
 # Step 3: Construct Merge Groupings
 classlist = ['O*NET-SOC '+str(y)+' Code, 6dig' for y in years]
-savelist = ['onetsoc_'+str(y)+'_to_OccAB.csv' for y in years]
+savelist = ['onetsoc_'+str(y)+'_to_SOC_AB.csv' for y in years]
 
 Classification,Xwalks = MultiXwalk2Classification_Exhaustive(df,classlist,noisily=True)
 

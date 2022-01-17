@@ -1,0 +1,22 @@
+import delimited using xwalk_soc_grand.csv,clear
+ren v2 onetsoc2000_6
+ren v3 onetsoc2006_6
+ren v4 onetsoc2000_8
+ren v5 onetsoc2006_8_l
+ren v6 onetsoc2000_8_t
+ren v7 onetsoc2006_8_t_l
+ren v8 onetsoc2009_6
+ren v9 onetsoc2006_8_r
+ren v10 onetsoc2009_8_l
+ren v11 onetsoc2006_8_t_r
+ren v12 onetsoc2009_8_t_l
+ren v13 onetsoc2010_6
+ren v14 onetsoc2009_8_r
+ren v15 onetsoc2010_8_l
+ren v16 onetsoc2009_8_t_r
+ren v17 onetsoc2010_8_t_l
+ren v18 onetsoc2019_6
+ren v19 onetsoc2010_8_r
+ren v20 onetsoc2019_8_l
+ren v21 onetsoc2010_8_t_r
+ren v22 onetsoc2019_8_t_l

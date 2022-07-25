@@ -28,6 +28,7 @@ merge 1:m onetsoc_code year using `socdesc', nogen
 order onetsoc_code_8dig onetsoc_title onetsoc_desc onetsoc_code soc_ab
 
 bys soc_ab: egen N = count(soc_ab)
+sort soc year onetsoc_code onetsoc_code_
 
 local GoodLevel = 8
-tab N if N>=`GoodLevel'
+tab N if N>=`GoodLevel' & !inlist(N,45,67,72)
